@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Tam's - Will You Be My Valentine? 💝</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Georgia', serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #1a0b1e 0%, #2d0f3a 30%, #4a154b 70%, #6d1b7b 100%);
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background elements */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.15);
+            font-size: 3rem;
+            z-index: 0;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        
+        .valentine-card {
+            width: 100%;
+            max-width: 700px;
+            background: linear-gradient(145deg, #ff2a6d 0%, #ff4d8d 30%, #ff66a3 100%);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(255, 20, 147, 0.4),
+                        0 0 100px rgba(255, 105, 180, 0.3);
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            color: white;
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #ffd6e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            font-style: italic;
+            color: #ffd6e7;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .for-tams {
+            font-size: 2rem;
+            color: #ffd6e7;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .card-content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .personal-message {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.1),
+                        0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .message-line {
+            font-size: 1.8rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .special-message {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 35px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+        
+        .special-message p {
+            font-size: 1.9rem;
+            color: #fff;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .love-tams {
+            background: linear-gradient(45deg, #ff3388, #ff66aa);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px auto;
+            max-width: 500px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 51, 136, 0.4);
+            animation: pulseLove 2s infinite;
+        }
+        
+        @keyframes pulseLove {
+            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(255, 51, 136, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(255, 51, 136, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(255, 51, 136, 0.4); }
+        }
+        
+        .love-tams p {
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .hearts-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+        
+        .heart-icon {
+            color: #ffebf3;
+            font-size: 2.8rem;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .question-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        .question {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 35px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #ffd6e7, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.6rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 180px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:active {
+            transform: translateY(5px);
+        }
+        
+        .btn-yes {
+            background: linear-gradient(to right, #00ff88, #00cc66);
+            color: #003322;
+        }
+        
+        .btn-yes:hover {
+            background: linear-gradient(to right, #00ee7f, #00bb5e);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+        }
+        
+        .btn-no {
+            background: linear-gradient(to right, #ff4444, #ff6666);
+            color: white;
+        }
+        
+        .btn-no:hover {
+            background: linear-gradient(to right, #ee3333, #ff5555);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 68, 68, 0.4);
+        }
+        
+        .response-area {
+            min-height: 120px;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s ease;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #ffd6e7;
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .card-header h1 { font-size: 2.5rem; }
+            .for-tams { font-size: 1.6rem; }
+            .special-message p { font-size: 1.6rem; }
+            .love-tams p { font-size: 1.8rem; }
+            .question { font-size: 2rem; }
+            .btn { padding: 18px 40px; font-size: 1.4rem; min-width: 160px; }
+            .message-line { font-size: 1.5rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .card-header h1 { font-size: 2rem; }
+            .for-tams { font-size: 1.4rem; }
+            .buttons { flex-direction: column; align-items: center; gap: 20px; }
+            .btn { width: 100%; max-width: 250px; }
+            .special-message p { font-size: 1.4rem; }
+            .love-tams p { font-size: 1.6rem; }
+            .question { font-size: 1.7rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated background hearts -->
+    <div id="backgroundHearts"></div>
+    
+    <div class="valentine-card">
+        <div class="card-header">
+            <h1>A Special Question For You 💝</h1>
+            <p>This Valentine's Day is just for you...</p>
+            <div class="for-tams">For Tam's ❤️</div>
+        </div>
+        
+        <div class="card-content">
+            <div class="personal-message">
+                <div class="message-line">I created this moment just for you, Tam's...</div>
+                
+                <div class="special-message">
+                    <p>I can't wait to celebrate this special day with you!<br>
+                    This could be the beginning of our beautiful Valentine's story. ❤️</p>
+                </div>
+                
+                <div class="love-tams">
+                    <p>I love you Tam's ❤️</p>
+                </div>
+            </div>
+            
+            <div class="hearts-row">
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+            </div>
+            
+            <div class="question-section">
+                <div class="question">
+                    Will you be my Valentine? 💘
+                </div>
+                
+                <div class="buttons">
+                    <button id="yesBtn" class="btn btn-yes">
+                        <i class="fas fa-heart"></i> Yes, Absolutely!
+                    </button>
+                    <button id="noBtn" class="btn btn-no">
+                        <i class="fas fa-times"></i> Maybe Not
+                    </button>
+                </div>
+                
+                <div id="responseArea" class="response-area">
+                    <!-- Response will appear here -->
+                </div>
+            </div>
+            
+            <div class="footer">
+                Made with <i class="fas fa-heart" style="color:#ff1493;"></i> especially for Tam's
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const responseArea = document.getElementById('responseArea');
+            const backgroundHearts = document.getElementById('backgroundHearts');
+            const loveTams = document.querySelector('.love-tams');
+            
+            // Create animated background hearts
+            for (let i = 0; i < 15; i++) {
+                createBackgroundHeart(i);
+            }
+            
+            let noClickCount = 0;
+            const romanticMessages = [
+                "Are you sure about that, Tam's? 😘",
+                "Think about all the fun we could have! 💕",
+                "I have chocolate and roses waiting for you, Tam's 🍫🌹",
+                "You're breaking my heart, Tam's! 💔",
+                "Give me a chance to make you smile! 😊",
+                "I'll keep asking until you say yes, Tam's! 💘"
+            ];
+            
+            // Make the "I love you Tam's" heart pulse when hovered
+            loveTams.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulseLove 0.8s infinite';
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            loveTams.addEventListener('mouseleave', function() {
+                this.style.animation = 'pulseLove 2s infinite';
+                this.style.transform = 'scale(1)';
+            });
+            
+            // Handle YES button click
+            yesBtn.addEventListener('click', function() {
+                // Romantic celebration
+                responseArea.innerHTML = `
+                    <div style="text-align:center;">
+                        <h2 style="color:#00ff88; font-size:3rem; margin-bottom:20px; text-shadow:0 0 10px rgba(0,255,136,0.7);">
+                            💗 Yay! You Said Yes! 🎉
+                        </h2>
+                        <p style="color:#ffd6e7; font-size:1.8rem; margin-bottom:15px;">
+                            You've made me the happiest person, Tam's! ❤️
+                        </p>
+                        <p style="color:#ffd6e7; font-size:1.5rem;">
+                            Get ready for the most romantic Valentine's Day ever! 💝
+                        </p>
+                    </div>
+                `;
+                
+                responseArea.style.background = "linear-gradient(45deg, rgba(0,255,136,0.2), rgba(255,20,147,0.2))";
+                responseArea.style.border = "2px solid rgba(0, 255, 136, 0.4)";
+                
+                // Change YES button
+                yesBtn.innerHTML = '<i class="fas fa-heart"></i> You\'re Amazing, Tam\'s!';
+                yesBtn.style.background = "linear-gradient(to right, #ff1493, #ff69b4)";
+                yesBtn.style.color = "white";
+                
+                // Hide NO button
+                noBtn.style.display = "none";
+                
+                // Update the "I love you Tam's" section
+                loveTams.innerHTML = '<p>I love you even more now, Tam\'s! 💖</p>';
+                loveTams.style.background = "linear-gradient(45deg, #00ff88, #00cc66)";
+                loveTams.style.animation = "pulseLove 1s infinite";
+                
+                // Create celebration hearts
+                for (let i = 0; i < 50; i++) {
+                    createCelebrationHeart();
+                }
+                
+                // Change header to celebration mode
+                document.querySelector('.card-header h1').innerHTML = "You're My Valentine, Tam's! 💖";
+                document.querySelector('.card-header p').innerHTML = "The beginning of something beautiful...";
+                document.querySelector('.for-tams').innerHTML = "My Beautiful Valentine ❤️";
+                
+                // Update footer
+                document.querySelector('.footer').innerHTML = "Made with <i class='fas fa-heart' style='color:#00ff88;'></i> for my Valentine, Tam's";
+            });
+            
+            // Handle NO button click
+            noBtn.addEventListener('click', function() {
+                // Cycle through romantic persuasion messages
+                responseArea.innerHTML = `
+                    <div style="text-align:center;">
+                        <p style="color:#ffd6e7; font-size:1.8rem; font-style:italic;">
+                            ${romanticMessages[noClickCount]}
+                        </p>
+                    </div>
+                `;
+                
+                responseArea.style.background = "rgba(255, 68, 68, 0.2)";
+                responseArea.style.border = "2px solid rgba(255, 68, 68, 0.4)";
+                
+                // Make NO button move around playfully
+                const moves = [
+                    "translate(30px, -20px)",
+                    "translate(-25px, 25px)",
+                    "translate(20px, 30px)",
+                    "translate(-30px, -15px)",
+                    "translate(15px, -25px)",
+                    "translate(-20px, 20px)"
+                ];
+                
+                noBtn.style.transform = moves[noClickCount % moves.length];
+                noBtn.style.transition = "transform 0.5s ease";
+                
+                // Make button smaller after a few clicks
+                if (noClickCount >= 2) {
+                    const scale = 1 - (noClickCount * 0.08);
+                    noBtn.style.transform += ` scale(${Math.max(scale, 0.6)})`;
+                }
+                
+                // Make the "I love you Tam's" section pulse more
+                loveTams.style.animation = "pulseLove 1s infinite";
+                setTimeout(() => {
+                    loveTams.style.animation = "pulseLove 2s infinite";
+                }, 1000);
+                
+                // Make YES button more appealing
+                yesBtn.style.transform = "scale(1.1)";
+                setTimeout(() => {
+                    yesBtn.style.transform = "scale(1)";
+                }, 300);
+                
+                // Cycle through messages
+                noClickCount = (noClickCount + 1) % romanticMessages.length;
+            });
+            
+            // Create background hearts
+            function createBackgroundHeart(index) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                
+                // Random position
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                heart.style.fontSize = size + 'rem';
+                
+                // Random animation delay
+                heart.style.animationDelay = Math.random() * 20 + 's';
+                heart.style.animationDuration = (Math.random() * 30 + 20) + 's';
+                
+                backgroundHearts.appendChild(heart);
+            }
+            
+            // Create celebration hearts
+            function createCelebrationHeart() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.position = 'fixed';
+                heart.style.color = getRandomColor();
+                heart.style.fontSize = Math.random() * 25 + 15 + 'px';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                heart.style.opacity = '0.9';
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                heart.style.textShadow = '0 0 10px currentColor';
+                document.body.appendChild(heart);
+                
+                // Animate the heart
+                const animation = heart.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.9 },
+                    { transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Remove heart after animation
+                animation.onfinish = () => heart.remove();
+            }
+            
+            // Get random romantic color
+            function getRandomColor() {
+                const colors = ['#ff1493', '#ff69b4', '#ff2a6d', '#ff4d8d', '#ff66a3', '#ff3388'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            // Add some initial floating hearts
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => createCelebrationHeart(), i * 300);
+            }
+            
+            // Make the "I love you Tam's" section clickable for extra hearts
+            loveTams.addEventListener('click', function() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => createCelebrationHeart(), i * 100);
+                }
+                
+                // Add a little sparkle effect
+                this.style.boxShadow = '0 0 30px rgba(255, 255, 255, 0.8)';
+                setTimeout(() => {
+                    this.style.boxShadow = '0 8px 20px rgba(255, 51, 136, 0.4)';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
